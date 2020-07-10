@@ -36,6 +36,10 @@ def welcome_print():
     print(ten_s, 'Let\'s start the game!', end='\n\n')
 
 
+def print_current_status():
+    print_hash(int(get_terminal_dim()[1]))
+    
+
 def get_terminal_dim():
     rows, columns = os.popen('stty size', 'r').read().split()
     return [rows, columns]
