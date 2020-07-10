@@ -5,14 +5,14 @@ import random
 import time
 import os
 
+board = [' ' for i in range(1, 10)]
+ten_s = '          '
+
 
 def welcome_print():
     welcome = ' Welcome to Tic-Tac-Toe Game by PitPietro '
     cols = get_terminal_dim()[1]
     half_w_len = (int(cols) - len(welcome)) // 2
-    ten_s = ' '
-    for i in range(10):
-        ten_s += ' '
     print_hash(int(cols))
     print()
     print_hash(half_w_len)
@@ -33,12 +33,22 @@ def welcome_print():
     print(dashes)
     print_spaces(half_l_len)
     print(' 7 | 8 | 9 ', end='\n\n')
-
+    print(ten_s, 'Let\'s start the game!', end='\n\n')
 
 
 def get_terminal_dim():
     rows, columns = os.popen('stty size', 'r').read().split()
     return [rows, columns]
+
+
+def get_player_input():
+    p_input = int(input('Enter a number: ')) - 1
+    if board[p_input] == ' ':
+        board[p_input] = 'X'
+        return True
+    else:
+        print(ten_s, ' The number is already taken or does not exist')
+        return False
 
 
 def tic_tac_toe_game():
