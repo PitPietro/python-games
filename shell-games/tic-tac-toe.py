@@ -11,18 +11,12 @@ ten_s = '          '
 
 def welcome_print():
     welcome = ' Welcome to Tic-Tac-Toe Game by PitPietro '
-    cols = get_terminal_dim()[1]
-    half_w_len = (int(cols) - len(welcome)) // 2
-    print_symbol('#', int(cols))
-    print()
-    print_symbol('#', half_w_len)
-    print(welcome, end='')
-    print_symbol('#', half_w_len)
-    print(end='\n\n')
+    print_title_message(welcome)
+
     print(ten_s, 'Number system is given below:', end='\n\n')
     line_l = ' 1 | 2 | 3 '
     dashes = ' --------- '
-    half_l_len = (int(cols) - len(line_l)) // 2
+    half_l_len = (int(get_terminal_dim()[1]) - len(line_l)) // 2
     print_symbol(' ', half_l_len)
     print(line_l)
     print_symbol(' ', half_l_len)
@@ -52,19 +46,12 @@ def get_player_input():
 
 
 def print_current_status():
-    welcome = ' Current status of the board '
-    cols = get_terminal_dim()[1]
-    half_w_len = (int(cols) - len(welcome)) // 2
-    print_symbol('#', int(cols))
-    print()
-    print_symbol('#', half_w_len)
-    print(welcome, end='')
-    print_symbol('#', half_w_len)
-    print(end='\n\n')
+    current_status = ' Current status of the board '
+    print_title_message(current_status)
 
     line_l = ' {} | {} | {}'
     dashes = ' --------- '
-    half_l_len = (int(cols) - len(line_l)) // 2
+    half_l_len = (int(get_terminal_dim()[1]) - len(line_l)) // 2
 
     msg = print_symbol_return(' ', half_l_len) + line_l + '\n' + \
           print_symbol_return(' ', half_l_len) + dashes + '\n' + \
@@ -73,6 +60,17 @@ def print_current_status():
           print_symbol_return(' ', half_l_len) + line_l
     print(msg.format(*board))
 
+    print(end='\n\n')
+
+
+def print_title_message(msg):
+    cols = get_terminal_dim()[1]
+    half_w_len = (int(cols) - len(msg)) // 2
+    print_symbol('#', int(cols))
+    print()
+    print_symbol('#', half_w_len)
+    print(msg, end='')
+    print_symbol('#', half_w_len)
     print(end='\n\n')
 
 
