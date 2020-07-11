@@ -14,19 +14,8 @@ def welcome_print():
     print_title_message(welcome)
 
     print(ten_s, 'Number system is given below:', end='\n\n')
-    line_l = ' 1 | 2 | 3 '
-    dashes = ' --------- '
-    half_l_len = (int(get_terminal_dim()[1]) - len(line_l)) // 2
-    print_symbol(' ', half_l_len)
-    print(line_l)
-    print_symbol(' ', half_l_len)
-    print(dashes)
-    print_symbol(' ', half_l_len)
-    print(' 4 | 5 | 6 ')
-    print_symbol(' ', half_l_len)
-    print(dashes)
-    print_symbol(' ', half_l_len)
-    print(' 7 | 8 | 9 ', end='\n\n')
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    print_board(numbers)
     print(ten_s, 'Let\'s start the game!', end='\n\n')
 
 
@@ -48,19 +37,7 @@ def get_player_input():
 def print_current_status():
     current_status = ' Current status of the board '
     print_title_message(current_status)
-
-    line_l = ' {} | {} | {}'
-    dashes = ' --------- '
-    half_l_len = (int(get_terminal_dim()[1]) - len(line_l)) // 2
-
-    msg = print_symbol_return(' ', half_l_len) + line_l + '\n' + \
-          print_symbol_return(' ', half_l_len) + dashes + '\n' + \
-          print_symbol_return(' ', half_l_len) + line_l + '\n' + \
-          print_symbol_return(' ', half_l_len) + dashes + '\n' + \
-          print_symbol_return(' ', half_l_len) + line_l
-    print(msg.format(*board))
-
-    print(end='\n\n')
+    print_board(board)
 
 
 def print_title_message(msg):
@@ -71,6 +48,20 @@ def print_title_message(msg):
     print_symbol('#', half_w_len)
     print(msg, end='')
     print_symbol('#', half_w_len)
+    print(end='\n\n')
+
+
+def print_board(n_list):
+    line_l = ' {} | {} | {}'
+    dashes = ' --------- '
+    half_l_len = (int(get_terminal_dim()[1]) - len(line_l)) // 2
+
+    msg = print_symbol_return(' ', half_l_len) + line_l + '\n' + \
+          print_symbol_return(' ', half_l_len) + dashes + '\n' + \
+          print_symbol_return(' ', half_l_len) + line_l + '\n' + \
+          print_symbol_return(' ', half_l_len) + dashes + '\n' + \
+          print_symbol_return(' ', half_l_len) + line_l
+    print(msg.format(*n_list))
     print(end='\n\n')
 
 
@@ -87,8 +78,8 @@ def print_symbol_return(symbol, number):
 
 
 def tic_tac_toe_game():
-    print_current_status()
     welcome_print()
+    print_current_status()
 
 
 tic_tac_toe_game()
