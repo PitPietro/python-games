@@ -34,6 +34,23 @@ def get_player_input():
         return False
 
 
+def get_computer_move():
+    # list of empty board's fields
+    empty = []
+    for i, place in enumerate(board):
+        if place == ' ':
+            empty.append(i)
+    # check if there are any empty fields
+    if empty:
+        place = random.choice(empty)
+        print(ten_s, '# Computer turn #')
+        board[place] = '0'
+        return True
+    else:
+        print(ten_s, '# Computer says: No move left! That\'s a tie #')
+        return False
+
+
 def print_current_status():
     current_status = ' Current status of the board '
     print_title_message(current_status)
@@ -48,6 +65,7 @@ def print_title_message(msg):
     print_symbol('#', half_w_len)
     print(msg, end='')
     print_symbol('#', half_w_len)
+    print_symbol('#', int(cols))
     print(end='\n\n')
 
 
