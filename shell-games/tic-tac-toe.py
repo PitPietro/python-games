@@ -5,6 +5,15 @@ import random
 import time
 import os
 
+'''
+board index position
+
+    0 | 1 | 2
+    --|---|--
+    3 | 4 | 5
+    --|---|--
+    6 | 7 | 8
+'''
 board = [' ' for i in range(1, 10)]
 ten_s = '          '
 
@@ -30,7 +39,7 @@ def get_player_input():
         board[p_input] = 'X'
         return True
     else:
-        print(ten_s, ' The number is already taken or does not exist')
+        print(ten_s, '~/ The number is already taken or does not exist')
         return False
 
 
@@ -43,12 +52,37 @@ def get_computer_move():
     # check if there are any empty fields
     if empty:
         place = random.choice(empty)
-        print(ten_s, '# Computer turn #')
+        print(ten_s, '| Computer turn')
         board[place] = '0'
         return True
     else:
-        print(ten_s, '# Computer says: No move left! That\'s a tie #')
+        print(ten_s, '~/ Computer says: No move left! That\'s a tie #')
         return False
+
+
+def check_game_status():
+    empty = [i for i in board if i == ' ']
+    if not empty:
+        print_title_message('Game over')
+    win_boards = [
+        [0, 1, 2],
+        [0, 4, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 4, 6],
+        [2, 5, 8],
+        [3, 4, 5],
+        [6, 7, 8],
+    ]
+    # check winning boards of the current game status
+    for x, y, z in win_boards:
+        if win_boards[x] != ' ' and win_boards[x] == win_boards[y] and win_boards[y] == win_boards[z]:
+            if win_boards[x] == 'O':
+                print(ten_s, '~/ Computer wins!')
+            else:
+                print(ten_s, '~/ You win!')
+            exit(0)
+    return
 
 
 def print_current_status():
@@ -97,7 +131,16 @@ def print_symbol_return(symbol, number):
 
 def tic_tac_toe_game():
     welcome_print()
-    print_current_status()
+    while True:
+        while True:
+            user_input = get_player_input()
+            if user_input:
+                break
+        print_current_status()
+        check_game_status()
+        get_computer_move()
+        print_current_status()
+        check_game_status()
 
 
 tic_tac_toe_game()
