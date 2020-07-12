@@ -22,10 +22,10 @@ def welcome_print():
     welcome = ' Welcome to Tic-Tac-Toe Game by PitPietro '
     print_title_message(welcome)
 
-    print(ten_s, 'Number system is given below:', end='\n\n')
+    print(ten_s, '~/ Number system is given below:', end='\n\n')
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     print_board(numbers)
-    print(ten_s, 'Let\'s start the game!', end='\n\n')
+    print(ten_s, '~/ Let\'s start the game!', end='\n\n')
 
 
 def get_terminal_dim():
@@ -51,8 +51,8 @@ def get_player_input():
         board[p_input] = 'X'
         return True
     else:
-        print(ten_s, '~/ The number is already taken or does not exist')
-        return False
+        print(ten_s, '~/ The number is already taken')
+        return
 
 
 def get_computer_move():
@@ -69,8 +69,9 @@ def get_computer_move():
         board[place] = '0'
         return True
     else:
-        print(ten_s, '~/ Computer says: No move left! That\'s a tie #')
-        return False
+        print(ten_s, '~/ Computer says: No move left! That\'s a tie!')
+        exit(0)
+    return
 
 
 def check_game_status():
@@ -89,8 +90,10 @@ def check_game_status():
     ]
     # check winning boards of the current game status
     for x, y, z in win_boards:
-        if win_boards[x] != ' ' and win_boards[x] == win_boards[y] and win_boards[y] == win_boards[z]:
-            if win_boards[x] == 'O':
+        # print('x: {}\t y: {}\t z: {}'.format(x, y, z))
+        # print('board[x]: {}\t board[y]: {}\t board[z]: {}'.format(board[x], board[y], board[z]))
+        if board[x] != ' ' and board[x] == board[y] and board[y] == board[z]:
+            if board[x] == 'O':
                 print(ten_s, '~/ Computer wins!')
             else:
                 print(ten_s, '~/ You win!')
@@ -102,6 +105,7 @@ def print_current_status():
     current_status = ' Current status of the board '
     print_title_message(current_status)
     print_board(board)
+    return
 
 
 def print_title_message(msg):
