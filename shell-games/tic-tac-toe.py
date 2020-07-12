@@ -93,7 +93,7 @@ def check_game_status():
         # print('x: {}\t y: {}\t z: {}'.format(x, y, z))
         # print('board[x]: {}\t board[y]: {}\t board[z]: {}'.format(board[x], board[y], board[z]))
         if board[x] != ' ' and board[x] == board[y] and board[y] == board[z]:
-            if board[x] == 'O':
+            if board[x] == '0':
                 print(ten_s, '~/ Computer wins!')
             else:
                 print(ten_s, '~/ You win!')
