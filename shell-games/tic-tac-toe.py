@@ -34,7 +34,19 @@ def get_terminal_dim():
 
 
 def get_player_input():
-    p_input = int(input('Enter a number: ')) - 1
+    while True:
+        try:
+            p_input = int(input('Enter a number: ')) - 1
+        except ValueError:
+            print(ten_s, '~/ You must insert a number')
+        except KeyboardInterrupt:
+            print(ten_s, '~/ Bye bye!')
+            exit(0)
+        else:
+            if -1 < p_input < 9:
+                break
+            else:
+                print(ten_s, '~/ Number out of range: it must be between 1 and 9')
     if board[p_input] == ' ':
         board[p_input] = 'X'
         return True
@@ -52,7 +64,8 @@ def get_computer_move():
     # check if there are any empty fields
     if empty:
         place = random.choice(empty)
-        print(ten_s, '| Computer turn')
+        print(ten_s, '~/ Computer turn')
+        print(ten_s, '________________', end='\n\n')
         board[place] = '0'
         return True
     else:
@@ -96,9 +109,9 @@ def print_title_message(msg):
     half_w_len = (int(cols) - len(msg)) // 2
     print_symbol('#', int(cols))
     print()
-    print_symbol('#', half_w_len)
+    print_symbol('=', half_w_len)
     print(msg, end='')
-    print_symbol('#', half_w_len)
+    print_symbol('=', half_w_len)
     print_symbol('#', int(cols))
     print(end='\n\n')
 
