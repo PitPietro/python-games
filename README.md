@@ -1,12 +1,21 @@
 # Python Games
+![GitHub repo size](https://img.shields.io/github/repo-size/PitPietro/python-games)
+![GitHub](https://img.shields.io/github/license/PitPietro/python-games)
 
-## Introduction
+## Table of Contents
+- [Installing](#installing)
+- [Versioning](#versioning)
+- [Author](#author)
 
-## Table of contents
-- [Python Games](#python-games)
-  - [Introduction](#introduction)
-  - [Table of contents](#table-of-contents)
-  - [Author](#author)
+## Installing
+Clone the repository on your computer and test yourself the library:
+```bash
+git clone https://github.com/PitPietro/python-games.git
+```
+
+## Versioning
+For the versions available, see the [tags on this repository](https://github.com/PitPietro/python-games/tags).
 
 ## Author
-fdasfda
+**Pietro Poluzzi** - [PitPietro](https://github.com/PitPietro)\
+See also the list of [contributors](https://github.com/PitPietro/python-games/contributors) who participated in this project.
